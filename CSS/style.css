@@ -1,16 +1,23 @@
 @charset "UTF-8";
 
+:root{
+    --background-color1:#A60A17;
+    --background-color1:#080A0D;
+    --background-color1:#BF0B0B;
+    --background-color1:#590707;
+    --background-color1:#F2F2F2;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
 html,body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: red;
+    background-color: #BF0B1A;
 
 }
 main{
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,11 +25,37 @@ main{
     width: 90vw;
     height: 100vh;
     margin: auto;
-    background-color: aliceblue;
-}
-main > div#conteiner{
-    text-align: center;
-    background-color: aqua;
-    width: 400px;
 
 }
+
+main > div#conteiner{
+    text-align: center;
+    background-color: #590707;
+    width: 380px;
+    border-radius: 20px;
+    height: 320px;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 3px 2px 4px #080A0D;
+}
+div > h1{
+    margin-bottom: 20px
+}
+ div > input{
+ padding: 10px;
+ border-radius: 10px;
+ margin: 10px;
+ width: 80%;
+ background-color:rgba(255, 255, 255, 0.847);
+}
+
+div > label{
+    display: none;
+}
+input#botao{
+    width: 86%;
+    padding:8px ;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
