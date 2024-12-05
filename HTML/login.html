@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link do style geral -->
     <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Boteco Frango da vivi</title>
 </head>
 <body>
@@ -12,13 +13,13 @@
         <div id="conteiner">
         <h1>Boteco Frango da vivi</h1>
         <form action="informação.php" method="POST">
-            <div id="e-mail">
-                <!-- icons -->
+            <div id="e-mail" class="base">
+                <span class="material-icons">person</span>
                 <input type="email" name="email" id="ie-mail" placeholder="E-mail" required>
                 <label for="iemail">e-mail</label>
             </div>
-            <div id="senha">
-                <!-- icons -->
+            <div id="senha" class="base">
+                <span class="material-icons">vpn_key</span>
                 <input type="password" name="senha" id="isenha" placeholder="sua senha" minlength="3" required>
                 <label for="isenha">senha</label>
             </div>
