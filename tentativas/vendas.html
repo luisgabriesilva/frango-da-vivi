@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Vendas</title>
+</head>
+<body>
+    <h1>Registrar Vendas de Frangos</h1>
+    <label for="nomeCliente">Nome do Cliente:</label>
+    <input type="text" id="nomeCliente">
+    <br>
+    <label for="quantidadeFrangos">Quantidade de Frangos:</label>
+    <input type="number" id="quantidadeFrangos" min="1">
+    <button onclick="registrarVenda()">Registrar Venda</button>
+    <p id="mensagemVenda"></p>
+    <br>
+    <a href="index.html">Voltar para a Página Inicial</a>
+
+    <script>
+        let totalFrangos = localStorage.getItem('totalFrangos') || 0;
+
+        function registrarVenda() {
+            const nomeCliente = document.getElementById('nomeCliente').value;
+            const quantidadeFrangos = parseInt(document.getElementById('quantidadeFrangos').value);
+            const mensagemVenda = document.getElementById('mensagemVenda');
+
+            if (!nomeCliente || quantidadeFrangos <= 0) {
+                mensagemVenda.innerText = 'Por favor, preencha todos os campos corretamente.';
+                return;
+            }
+
+            if (quantidadeFrangos > totalFrangos) {
+                mensagemVenda.innerText = 'Quantidade de frangos insuficiente.';
+                return;
+            }
+
+            totalFrangos -= quantidadeFrangos;
+            localStorage.setItem('totalFrangos', totalFrangos);
+            mensagemVenda.innerText = `Venda registrada: ${nomeCliente} levou ${quantidadeFrangos} frangos.`;
+        }
+    </script>
+</body>
+</html>
