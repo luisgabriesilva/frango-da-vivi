@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f8f8f8;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .barra {
+            width: 200px;
+            height: 10px;
+            background-color: #e0e0e0;
+            margin: 0 10px;
+        }
+        .barra div {
+            height: 100%;
+            background-color: #76c7c0;
+        }
+        .my {
+            width: 30px;
+            height: 30px;
+            background-color: #76c7c0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        .pedidos {
+            margin-top: 20px;
+        }
+        .cancelar {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">Nome do Estabelecimento</div>
+        <div class="header-right">
+            <span id="quantidadeVendida">0</span> Frangos Vendidos
+            <div class="barra">
+                <div id="barraFrangos" style="width: 100%;"></div>
+            </div>
+            <div class="my" onclick="abrirMy()">M</div>
+        </div>
+    </header>
+    <div class="container">
+        <h2>Faça seu pedido</h2>
+        <input type="text" id="nome" placeholder="Nome da pessoa">
+        <input type="text" id="endereco" placeholder="Endereço">
+        <label>
+            <input type="checkbox" id="pagamento"> Já pagou?
+        </label>
+        <label>
+            <input type="radio" name="retirada" value="loja"> Retirar na loja
+            <input type="radio" name="retirada" value="entrega"> Entregar
+        </label>
+        <input type="time" id="horario">
+        <div>
+            <label>Frangos:</label>
+            <input type="checkbox" id="frango" onclick="atualizarFrangos()">
+            <label>Adicionar Maionese:</label>
+            <input type="checkbox" id="maionese">
+            <label>Adicionar Polenta:</label>
+            <input type="checkbox" id="polenta">
+        </div>
+        <button onclick="finalizarPedido()">Finalizar Pedido</button>
+
+        <div class="pedidos">
+            <h3>Pedidos Realizados:</h3>
+            <ul id="listaPedidos"></ul>
+        </div>
+    </div>
+
+    <script>
+        let quantidadeFrangos = parseInt(localStorage.getItem('quantidadeFrangos')) || 10; // Inicializa com 10 frangos
+        let quantidadeVendida = 0;
+        let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            atualizarBarraFrangos();
+            exibirPedidos();
+        });
+
+        function atualizarFrangos() {
+            if (document.getElementById('frango').checked) {
+                if (quantidadeFrangos > 0) {
+                    quantidadeFrangos--;
+                    quantidadeVendida++;
+                    document.getElementById('quantidadeVendida').innerText = quantidadeVendida;
+                    atualizarBarraFrangos();
+                } else {
+                    alert('Não há mais frangos disponíveis!');
+                    document.getElementById('frango').checked = false; // Desmarcar se não houver frango
+                }
+            }
+        }
+
+        function atualizarBarraFrangos() {
+            const porcentagem = (quantidadeFrangos > 0) ? (quantidadeFrangos / 10) * 100 : 0; // Supondo que o total seja 10
+            document.getElementById('barraFrangos').style.width = `${porcentagem}%`;
+        }
+
+        function finalizarPedido() {
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const pagamento = document.getElementById('pagamento').checked;
+            const retirada = document.querySelector('input[name="retirada"]:checked') ? document.querySelector('input[name="retirada"]:checked').value : 'Não especificado';
+            const horario = document.getElementById('horario').value;
+            const frango = document.getElementById('frango').checked;
+            const maionese = document.getElementById('maionese').checked;
+            const polenta = document.getElementById('polenta').checked;
+
+            if (nome) {
+                const pedido = {
+                    nome,
+                    endereco,
+                    pagamento,
+                    retirada,
+                    horario,
+                    frango,
+                    maionese,
+                    polenta
+                };
+
+                // Adiciona o pedido ao array de pedidos
+                pedidos.push(pedido);
+                localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+                // Atualiza a quantidade de frangos no localStorage
+                localStorage.setItem('quantidadeFrangos', quantidadeFrangos);
+                document.getElementById('quantidadeVendida').innerText = quantidadeVendida;
+
+                // Exibe os pedidos
+                exibirPedidos();
+
+                // Resetar os campos após finalizar o pedido
+                document.getElementById('nome').value = '';
+                document.getElementById('endereco').value = '';
+                document.getElementById('pagamento').checked = false;
+                document.getElementById('horario').value = '';
+                document.getElementById('frango').checked = false;
+                document.getElementById('maionese').checked = false;
+                document.getElementById('polenta').checked = false;
+
+                atualizarBarraFrangos();
+            } else {
+                alert('Por favor, insira o nome da pessoa.');
+            }
+        }
+
+        function exibirPedidos() {
+            const listaPedidos = document.getElementById('listaPedidos');
+            listaPedidos.innerHTML = ''; // Limpa a lista antes de exibir
+
+            pedidos.forEach((pedido, index) => {
+                const li = document.createElement('li');
+                li.textContent = `Pedido ${index + 1}: ${pedido.nome}, Endereço: ${pedido.endereco}, Pagamento: ${pedido.pagamento ? 'Sim' : 'Não'}, Retirada: ${pedido.retirada}, Horário: ${pedido.horario}, Frango: ${pedido.frango ? 'Sim' : 'Não'}, Maionese: ${pedido.maionese ? 'Sim' : 'Não'}, Polenta: ${pedido.polenta ? 'Sim' : 'Não'}`;
+                
+                // Botão de cancelar pedido
+                const cancelarBtn = document.createElement('span');
+                cancelarBtn.textContent = 'Cancelar';
+                cancelarBtn.className = 'cancelar';
+                cancelarBtn.onclick = () => cancelarPedido(index);
+                
+                li.appendChild(cancelarBtn);
+                listaPedidos.appendChild(li);
+            });
+        }
+
+        function cancelarPedido(index) {
+            if (confirm('Tem certeza que deseja cancelar este pedido?')) {
+                // Remove o pedido do array
+                pedidos.splice(index, 1);
+                localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+                // Atualiza a exibição dos pedidos
+                exibirPedidos();
+            }
+        }
+
+        function abrirMy() {
+            alert('Função "M" ainda não implementada.');
+        }
+    </script>
+</body>
+</html>
