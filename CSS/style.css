@@ -346,7 +346,7 @@ div#menu > button#loja:hover:after {
   flex-wrap: wrap;
 }
 
-div > h3 {
+div > h3{
   width: 100%;
   transform: translateY(20px);
 }
@@ -357,13 +357,10 @@ div > h3 {
   flex-wrap: wrap;
   width: 200px;
   border: solid 3px;
-  box-shadow: 3px 3px 20px blue;
   padding: 2px;
 }
 
-.separar:hover {
-  padding: 10px;
-}
+
 
 .separar > p {
   margin: 4px;
@@ -438,4 +435,68 @@ span {
   outline: none;
   border: none;
   background: transparent;
+}
+
+/* Estilo básico para os pedidos */
+#listaPedidos li {
+    margin : 10px 10px ;
+    padding: 10px;
+    border-radius: 5px;
+    width: 210px;
+    height: 290px;
+    border: 1px solid #ccc;
+    list-style: none;
+  }
+  
+  /* Pedidos pagos */
+  .pedido-pago {
+    background-color: #d4edda; /* Verde claro */
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+  
+  /* Pedidos retirados na loja */
+  .pedido-loja {
+    background-color: #fff3cd; /* Amarelo claro */
+    border: 1px solid #ffeeba;
+    color: #856404;
+  }
+  
+  /* Pedidos para entrega */
+  .pedido-entrega {
+    background-color: #cce5ff; /* Azul claro */
+    border: 1px solid #b8daff;
+    color: #004085;
+  }
+  
+  /* Pedidos não pagos */
+  .pedido-nao-pago {
+    background-color: #f8d7da; /* Vermelho claro */
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  button.cancelar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+button.imprimir {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.cancelar:hover {
+    background-color: darkred;
+}
+
+button.imprimir:hover {
+    background-color: darkgreen;
 }

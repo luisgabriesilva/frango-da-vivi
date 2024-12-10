@@ -27,13 +27,14 @@
         </label>
         <input type="time" id="horario" />
         <div>
-          <label>Frangos:</label>
-          <input type="checkbox" id="frango" onclick="atualizarFrangos()" />
-          <label>Adicionar Maionese:</label>
-          <input type="checkbox" id="maionese" />
-          <label>Adicionar Polenta:</label>
-          <input type="checkbox" id="polenta" />
-        </div>
+            <label>Frangos (R$55 cada):</label>
+            <input type="number" id="quantidadeFrango" min="0" value="0" onchange="atualizarValorTotal()" /><br>
+            <label>Maionese (R$15 cada):</label>
+            <input type="number" id="quantidadeMaionese" min="0" value="0" onchange="atualizarValorTotal()" /><br>
+            <label>Polenta (R$20 cada):</label>
+            <input type="number" id="quantidadePolenta" min="0" value="0" onchange="atualizarValorTotal()" />
+          </div>
+          <p id="valorTotal">Valor Total: R$ 0</p>
         <button class="button2" onclick="finalizarPedido()">
           Finalizar Pedido
         </button>
@@ -54,84 +55,117 @@
     </div>
 
     <script>
+ document.addEventListener('DOMContentLoaded', () => {
+    // Carrega o total de frangos do localStorage ou define um padrão
+    let quantidadeFrangos = parseInt(localStorage.getItem('quantidadeFrangos')) || 22; // Define 22 como padrão
+    let quantidadeVendida = parseInt(localStorage.getItem('quantidadeVendida')) || 0;
+
+    // Atualiza os valores no header
+    document.getElementById('quantidadeInput').innerText = quantidadeFrangos;
+    document.getElementById('quantidadeVendida').innerText = quantidadeVendida;
+});
       let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
       document.addEventListener("DOMContentLoaded", () => {
         exibirPedidos();
       });
 
+      function atualizarValorTotal() {
+    const precoFrango = 55;
+    const precoMaionese = 15;
+    const precoPolenta = 20;
+
+    const quantidadeFrango = parseInt(document.getElementById('quantidadeFrango').value) || 0;
+    const quantidadeMaionese = parseInt(document.getElementById('quantidadeMaionese').value) || 0;
+    const quantidadePolenta = parseInt(document.getElementById('quantidadePolenta').value) || 0;
+
+    const total = (quantidadeFrango * precoFrango) +
+                  (quantidadeMaionese * precoMaionese) +
+                  (quantidadePolenta * precoPolenta);
+
+    document.getElementById('valorTotal').innerText = `Valor Total: R$ ${total}`;
+}
+
       function finalizarPedido() {
-        const nome = document.getElementById("nome").value;
-        const endereco = document.getElementById("endereco").value;
-        const horario = document.getElementById("horario").value;
-        const pagamento = document.getElementById("pagamento").checked;
-        const retirada = document.querySelector(
-          'input[name="retirada"]:checked'
-        )?.value;
-        const frango = document.getElementById("frango").checked;
-        const maionese = document.getElementById("maionese").checked;
-        const polenta = document.getElementById("polenta").checked;
+    const nome = document.getElementById("nome").value;
+    const endereco = document.getElementById("endereco").value;
+    const horario = document.getElementById("horario").value;
+    const pagamento = document.getElementById("pagamento").checked;
+    const retirada = document.querySelector('input[name="retirada"]:checked')?.value;
 
-        if (!nome || !retirada) {
-          alert("Por favor, preencha o nome e selecione a forma de retirada.");
-          return;
-        }
+    const quantidadeFrango = parseInt(document.getElementById('quantidadeFrango').value) || 0;
+    const quantidadeMaionese = parseInt(document.getElementById('quantidadeMaionese').value) || 0;
+    const quantidadePolenta = parseInt(document.getElementById('quantidadePolenta').value) || 0;
 
-        const pedido = {
-          nome,
-          endereco,
-          horario,
-          pagamento,
-          retirada,
-          frango,
-          maionese,
-          polenta,
-        };
+    const precoFrango = 55;
+    const precoMaionese = 15;
+    const precoPolenta = 20;
 
-        pedidos.push(pedido);
-        localStorage.setItem("pedidos", JSON.stringify(pedidos));
+    const total = (quantidadeFrango * precoFrango) +
+                  (quantidadeMaionese * precoMaionese) +
+                  (quantidadePolenta * precoPolenta);
 
-        document.getElementById("nome").value = "";
-        document.getElementById("endereco").value = "";
-        document.getElementById("horario").value = "";
-        document.getElementById("pagamento").checked = false;
-        document.querySelector(
-          'input[name="retirada"]:checked'
-        ).checked = false;
-        document.getElementById("frango").checked = false;
-        document.getElementById("maionese").checked = false;
-        document.getElementById("polenta").checked = false;
+    if (!nome || !retirada) {
+        alert("Por favor, preencha o nome e selecione a forma de retirada.");
+        return;
+    }
 
-        exibirPedidos();
-      }
+    const pedido = {
+        nome,
+        endereco,
+        horario,
+        pagamento,
+        retirada,
+        quantidadeFrango,
+        quantidadeMaionese,
+        quantidadePolenta,
+        total
+    };
 
+    pedidos.push(pedido);
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+
+    document.getElementById("nome").value = "";
+    document.getElementById("endereco").value = "";
+    document.getElementById("horario").value = "";
+    document.getElementById("pagamento").checked = false;
+    document.querySelector('input[name="retirada"]:checked').checked = false;
+    document.getElementById('quantidadeFrango').value = "0";
+    document.getElementById('quantidadeMaionese').value = "0";
+    document.getElementById('quantidadePolenta').value = "0";
+    document.getElementById('valorTotal').innerText = "Valor Total: R$ 0";
+
+    exibirPedidos();
+}
       function exibirPedidos() {
-        const listaPedidos = document.getElementById("listaPedidos");
-        listaPedidos.innerHTML = "";
+    const listaPedidos = document.getElementById("listaPedidos");
+    listaPedidos.innerHTML = "";
 
-        pedidos.forEach((pedido, index) => {
-          const li = document.createElement("li");
-          li.innerHTML = `
+    pedidos.forEach((pedido, index) => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
             <div class="separar"> 
                 <p>Nome: ${pedido.nome}</p>
                 <p>Endereço: ${pedido.endereco}</p>
                 <p>Pagamento: ${pedido.pagamento ? "Sim" : "Não"}</p> 
                 <p>Retirada: ${pedido.retirada}</p> 
                 <p>Horário: ${pedido.horario}</p>  
-                <p>Frango: ${pedido.frango ? "Sim" : "Não"}</p> 
-                <p>Maionese: ${pedido.maionese ? "Sim" : "Não"}</p> 
-                <p>Polenta: ${pedido.polenta ? "Sim" : "Não"}</p> 
+                <p>Frango: ${pedido.quantidadeFrango} unidade(s)</p> 
+                <p>Maionese: ${pedido.quantidadeMaionese} unidade(s)</p> 
+                <p>Polenta: ${pedido.quantidadePolenta} unidade(s)</p> 
+                <p><strong>Total: R$ ${pedido.total}</strong></p>
             </div>`;
 
-          const cancelarBtn = document.createElement("span");
-          cancelarBtn.textContent = "Cancelar";
-          cancelarBtn.className = "cancelar";
-          cancelarBtn.onclick = () => cancelarPedido(index);
+        const cancelarBtn = document.createElement("span");
+        cancelarBtn.textContent = "Cancelar";
+        cancelarBtn.className = "cancelar";
+        cancelarBtn.onclick = () => cancelarPedido(index);
 
-          li.appendChild(cancelarBtn);
-          listaPedidos.appendChild(li);
-        });
-      }
+        li.appendChild(cancelarBtn);
+        listaPedidos.appendChild(li);
+    });
+}
 
       function cancelarPedido(index) {
         if (confirm("Tem certeza que deseja cancelar este pedido?")) {
