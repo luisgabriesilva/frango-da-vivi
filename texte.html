@@ -43,14 +43,10 @@
           <div id="menu">
             <h3>Pedidos Realizados:</h3>
             <button onclick="filtrarPedidos('todos')">Todos</button>
-            <button id="pagos" onclick="filtrarPedidos('pagos')">Pagos</button>
-            <button id="loja" onclick="filtrarPedidos('loja')">
-              Retirar na Loja
-            </button>
-            <button id="entrega" onclick="filtrarPedidos('entrega')">
-              Entrega
-            </button>
-            <button id="fim" onclick="finalizarDia()">Dia Finalizado</button>
+            <button onclick="filtrarPedidos('pagos')">Pagos</button>
+            <button onclick="filtrarPedidos('loja')">Retirar na Loja</button>
+            <button onclick="filtrarPedidos('entrega')">Entrega</button>
+            <button onclick="finalizarDia()">Dia Finalizado</button>
           </div>
         </div>
         <ul id="listaPedidos"></ul>
@@ -58,16 +54,6 @@
     </div>
 
     <script>
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Carrega o total de frangos do localStorage ou define um padrão
-    let quantidadeFrangos = parseInt(localStorage.getItem('quantidadeFrangos')) || 22; // Define 22 como padrão
-    let quantidadeVendida = parseInt(localStorage.getItem('quantidadeVendida')) || 0;
-
-    // Atualiza os valores no header
-    document.getElementById('quantidadeInput').innerText = quantidadeFrangos;
-    document.getElementById('quantidadeVendida').innerText = quantidadeVendida;
-});
       let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
 
       document.addEventListener("DOMContentLoaded", () => {
