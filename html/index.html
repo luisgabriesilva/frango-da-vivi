@@ -22,18 +22,18 @@
 <body>
     <div class="container">
         <h1>Olá, quantos frangos iremos vender hoje?</h1>
-        <input type="number" id="quantidadeFrangos" placeholder="Quantidade de frangos" min="1">
+        <input type="number" id="quantidadeFrangos" min="0" value="0" onchange="atualizarQuantidadeFrangos()">
         <button onclick="irParaPedido()">Enviar</button>
     </div>
 
     <script>
         function irParaPedido() {
             const quantidadeInput = document.getElementById('quantidadeFrangos').value;
-            if (quantidadeInput) {
+            if (quantidadeInput && !isNaN(quantidadeInput) && quantidadeInput > 0) {
                 localStorage.setItem('quantidadeFrangos', quantidadeInput);
                 window.location.href = 'order.html';
             } else {
-                alert('Por favor, insira uma quantidade de frangos.');
+                alert('Por favor, insira uma quantidade de frangos válida.');
             }
         }
     </script>
