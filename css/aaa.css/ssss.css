@@ -1,4 +1,71 @@
-<!DOCTYPE html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .order {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    width: 425px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  input {
+    margin: 4px;
+    padding: 8px;
+    border-radius: 20px;
+  }
+  
+  .pedidos {
+    margin-top: 20px;
+    height: 100px;display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  #menu> h3{
+    width: 45%;
+    margin: 10px;
+    transform: translateY(15px);
+  }
+  #menu > #pesquisaNome{
+    width: 90%;
+    height: 30%;
+    transform: translateY(13px);
+  }
+  #listaPedidos {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -45,7 +112,7 @@
             <input type="text" id="pesquisaNome" placeholder="Pesquisar pelo nome" oninput="filtrarPedidosPorNome()" />
             <button onclick="filtrarPedidos('todos')">Todos</button>
             <button id="pagos" onclick="filtrarPedidos('pagos')">Pagos</button>
-            <button id="loja" onclick="filtrarPedidos('loja')">Retirar na Loja</button>
+            <button id="lija" onclick="filtrarPedidos('loja')">Retirar na Loja</button>
             <button id="entrega" onclick="filtrarPedidos('entrega')">Entrega</button>
             <button id="fim" onclick="finalizarDia()">Dia Finalizado</button>
           </div>
@@ -75,69 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ...
 
     function finalizarPedido() {
-    const nome = document.getElementById("nome").value;
-    const endereco = document.getElementById("endereco").value;
-    const horario = document.getElementById("horario").value;
-    const pagamento = document.getElementById("pagamento").checked;
-    const retirada = document.querySelector('input[name="retirada"]:checked')?.value;
+      // ...
 
-    const quantidadeFrango = parseInt(document.getElementById('quantidadeFrango').value) || 0;
-    const quantidadeMaionese = parseInt(document.getElementById('quantidadeMaionese').value) || 0;
-    const quantidadePolenta = parseInt(document.getElementById('quantidadePolenta').value) || 0;
+      // Atualiza quantidade vendida
+     // Atualiza quantidade vendida
+let quantidadeVendida = parseInt(localStorage.getItem("quantidadeVendida")) || 0;
+quantidadeVendida += quantidadeFrango;
+localStorage.setItem("quantidadeVendida", quantidadeVendida);
 
-    const precoFrango = 55;
-    const precoMaionese = 15;
-    const precoPolenta = 20;
-
-    const total = (quantidadeFrango * precoFrango) +
-                  (quantidadeMaionese * precoMaionese) +
-                  (quantidadePolenta * precoPolenta);
-
-    if (!nome || !retirada) {
-        alert("Por favor, preencha o nome e selecione a forma de retirada.");
-        return;
+// Atualiza quantidade de frangos disponíveis
+const quantidadeFrangos = localStorage.getItem('quantidadeFrangos');
+// const quantidadeFrangosDisponiveis = quantidadeFrangos - quantidadeVendida;
+// document.getElementById('quantidadeInput').innerText = quantidadeFrangosDisponiveis;
+document.getElementById('quantidadeInput').innerText = quantidadeFrangos;
+      // ...
     }
-
-    const pedido = {
-        nome,
-        endereco,
-        horario,
-        pagamento,
-        retirada,
-        quantidadeFrango,
-        quantidadeMaionese,
-        quantidadePolenta,
-        total,
-        confirmado: false // Inicialmente, o pedido não está confirmado
-    };
-
-    // Adiciona o pedido e salva no localStorage
-    pedidos.push(pedido);
-    localStorage.setItem("pedidos", JSON.stringify(pedidos));
-
-    // Atualiza quantidade vendida
-    let quantidadeVendida = parseInt(localStorage.getItem("quantidadeVendida")) || 0;
-    quantidadeVendida += quantidadeFrango;
-    localStorage.setItem("quantidadeVendida", quantidadeVendida);
-
-    atualizarHeader();
-    exibirPedidos();
-
-    // Limpa os campos do formulário
-    document.getElementById("nome").value = "";
-    document.getElementById("endereco").value = "";
-    document.getElementById("horario").value = "";
-    document.getElementById("pagamento").checked = false;
-    if (document.querySelector('input[name="retirada"]:checked')) {
-        document.querySelector('input[name="retirada"]:checked').checked = false;
-    }
-    document.getElementById("quantidadeFrango").value = "0";
-    document.getElementById("quantidadeMaionese").value = "0";
-    document.getElementById("quantidadePolenta").value = "0";
-    document.getElementById("valorTotal").innerText = "Valor Total: R$ 0";
-
-    exibirPedidos();
-}
     
           function atualizarValorTotal() {
         const precoFrango = 55;
@@ -181,22 +200,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         const pedido = {
-        nome,
-        endereco,
-        horario,
-        pagamento,
-        retirada,
-        quantidadeFrango,
-        quantidadeMaionese,
-        quantidadePolenta,
-        total,
-        confirmado: false // Inicialmente, o pedido não está confirmado
-    };
-
-    // Adiciona o pedido e salva no localStorage
-    pedidos.push(pedido);
-    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+            nome,
+            endereco,
+            horario,
+            pagamento,
+            retirada,
+            quantidadeFrango,
+            quantidadeMaionese,
+            quantidadePolenta,
+            total
+        };
     
+// Adiciona o pedido e salva no localStorage
+pedidos.push(pedido);
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
 
     // Atualiza quantidade vendida
     let quantidadeVendida = parseInt(localStorage.getItem("quantidadeVendida")) || 0;
@@ -223,41 +240,34 @@ document.addEventListener('DOMContentLoaded', () => {
 }
     
       
-function exibirPedidos() {
-    const listaPedidos = document.getElementById("listaPedidos");
-    listaPedidos.innerHTML = ""; // Limpa a lista antes de exibir os pedidos
+        function exibirPedidos() {
+        const listaPedidos = document.getElementById("listaPedidos");
+        listaPedidos.innerHTML = "";
+    
+        pedidos.forEach((pedido, index) => {
+            const li = document.createElement("li");
+    
+            li.innerHTML = `
+                <div class="separar"> 
+                    <p>Nome: ${pedido.nome}</p>
+                    <p>Endereço: ${pedido.endereco}</p>
+                    <p>Pagamento: ${pedido.pagamento ? "Sim" : "Não"}</p> 
+                    <p>Retirada: ${pedido.retirada}</p> 
+                    <p>Horário: ${pedido.horario}</p>  
+                    <p>Frango: ${pedido.quantidadeFrango} unidade(s)</p> 
+                    <p>Maionese: ${pedido.quantidadeMaionese} unidade(s)</p> 
+                    <p>Polenta: ${pedido.quantidadePolenta} unidade(s)</p> 
+                    <p><strong>Total: R$ ${pedido.total}</strong></p>
+                </div>`;
 
-    pedidos.forEach((pedido, index) => {
-        const li = document.createElement("li");
+                const confirmarBtn = document.createElement("span");
+                confirmarBtn.textContent = "Confirma";
+                confirmarBtn.className = "confirmar";
+              confirmarBtn.onclick = () => confirmarPedido(index);
 
-        li.innerHTML = `
-            <div class="separar"> 
-                <p>Nome: ${pedido.nome}</p>
-                <p>Endereço: ${pedido.endereco}</p>
-                <p>Pagamento: ${pedido.pagamento ? "Sim" : "Não"}</p> 
-                <p>Retirada: ${pedido.retirada}</p> 
-                <p>Horário: ${pedido.horario}</p>  
-                <p>Frango: ${pedido.quantidadeFrango} unidade(s)</p> 
-                <p>Maionese: ${pedido.quantidadeMaionese} unidade(s)</p> 
-                <p>Polenta: ${pedido.quantidadePolenta} unidade(s)</p> 
-                <p><strong>Total: R$ ${pedido.total}</strong></p>
-            </div>`;
-
-        // Verifica se o pedido foi confirmado
-        if (pedido.confirmado) {
-    li.style.backgroundColor = "#d4edda"; // Muda a cor de fundo do li para verde claro
-    li.style.color = "#000"; // Muda a cor do texto para preto, se necessário
-}
-
-        // Criação do botão "Confirma"
-        const confirmarBtn = document.createElement("button");
-        confirmarBtn.textContent = "Confirma";
-        confirmarBtn.className = "confirmar";
-        confirmarBtn.onclick = () => confirmarPedido(index); // Chama a função de confirmação
-
-        // Adiciona o botão ao item da lista
-        li.appendChild(confirmarBtn);
-        listaPedidos.appendChild(li)
+            li.appendChild(confirmarBtn);
+            listaPedidos.appendChild(li);
+    
     
             const imprimirBtn = document.createElement("span");
             imprimirBtn.textContent = "imprimir";
@@ -304,27 +314,28 @@ function exibirPedidos() {
                 <p><strong>Total: R$ ${pedido.total}</strong></p>
             </div>`;
 
-        const confirmarBtn = document.createElement("span");
-        confirmarBtn.textContent = "Confirma";
-        confirmarBtn.className = "confirmar";
-        confirmarBtn.onclick = () => confirmarPedido(index);
+        const buttonContainer = document.createElement("div"); // Cria um contêiner para os botões
+buttonContainer.className = "button-container"; // Adiciona uma classe para estilização
 
-        li.appendChild(confirmarBtn);
+const confirmarBtn = document.createElement("span");
+confirmarBtn.textContent = "Confirma";
+confirmarBtn.className = "confirmar";
+confirmarBtn.onclick = () => confirmarPedido(index);
+buttonContainer.appendChild(confirmarBtn); // Adiciona o botão ao contêiner
 
-        const imprimirBtn = document.createElement("span");
-        imprimirBtn.textContent = "imprimir";
-        imprimirBtn.className = "imprimir";
-        imprimirBtn.onclick = () => imprimirPedido(index);
-        
-        li.appendChild(imprimirBtn);
-        
-        const cancelarBtn = document.createElement("span");
-        cancelarBtn.textContent = "Cancelar";
-        cancelarBtn.className = "cancelar";
-        cancelarBtn.onclick = () => cancelarPedido(index);
-        
-        li.appendChild(cancelarBtn);
-        listaPedidos.appendChild(li);
+const imprimirBtn = document.createElement("span");
+imprimirBtn.textContent = "Imprimir";
+imprimirBtn.className = "imprimir";
+imprimirBtn.onclick = () => imprimirPedido(index);
+buttonContainer.appendChild(imprimirBtn); // Adiciona o botão ao contêiner
+
+const cancelarBtn = document.createElement("span");
+cancelarBtn.textContent = "Cancelar";
+cancelarBtn.className = "cancelar";
+cancelarBtn.onclick = () => cancelarPedido(index);
+buttonContainer.appendChild(cancelarBtn); // Adiciona o botão ao contêiner
+
+li.appendChild(buttonContainer); // Adiciona o contêiner de botões à lista
     });
 }
     
@@ -340,15 +351,12 @@ function exibirPedidos() {
   document.getElementById('quantidadeInput').innerText = quantidadeFrangosDisponiveis;
 });
 }
-
-function confirmarPedido(index) {
-    // Atualiza a propriedade 'confirmado' do pedido
-    pedidos[index].confirmado = true;
-    localStorage.setItem("pedidos", JSON.stringify(pedidos)); // Salva a alteração no localStorage
-
-    exibirPedidos(); // Atualiza a exibição dos pedidos
-}
    
+function confirmarPedido(index) {
+    const listaPedidos = document.getElementById("listaPedidos");
+    const pedidoLi = listaPedidos.children[index];
+    pedidoLi.style.backgroundColor = "#d4edda"; // Verde claro
+}
     
 function cancelarPedido(index) {
     if (confirm("Tem certeza que deseja cancelar este pedido?")) {
@@ -398,47 +406,31 @@ function cancelarPedido(index) {
           }
     
           // Função de filtro para os pedidos
-         function filtrarPedidos(filtro) {
-    const listaPedidos = document.getElementById("listaPedidos");
-    listaPedidos.innerHTML = "";
-
-    const pedidosFiltrados = pedidos.filter((pedido) => {
-        if (filtro === "todos") return true;
-        if (filtro === "pagos") return pedido.pagamento;
-        if (filtro === "loja ") return pedido.retirada === "loja";
-        return false;
-    });
-
-    pedidosFiltrados.forEach((pedido, index) => {
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            <div class="separar"> 
-                <p>Nome: ${pedido.nome}</p>
-                <p>Endereço: ${pedido.endereco}</p>
-                <p>Pagamento: ${pedido.pagamento ? "Sim" : "Não"}</p> 
-                <p>Retirada: ${pedido.retirada}</p> 
-                <p>Horário: ${pedido.horario}</p>  
-                <p>Frango: ${pedido.quantidadeFrango} unidade(s)</p> 
-                <p>Maionese: ${pedido.quantidadeMaionese} unidade(s)</p> 
-                <p>Polenta: ${pedido.quantidadePolenta} unidade(s)</p> 
-                <p><strong>Total: R$ ${pedido.total}</strong></p>
-            </div>`;
-
-        // Verifica se o pedido foi confirmado
-        if (pedido.confirmado) {
-    li.style.backgroundColor = "#d4edda"; // Muda a cor de fundo do li para verde claro
-    li.style.color = "#000"; // Muda a cor do texto para preto, se necessário
-}
-        // Criação do botão "Confirma"
-        const confirmarBtn = document.createElement("button");
-        confirmarBtn.textContent = "Confirma";
-        confirmarBtn.className = "confirmar";
-        confirmarBtn.onclick = () => confirmarPedido(index); // Chama a função de confirmação
-
-        // Adiciona o botão ao item da lista
-        li.appendChild(confirmarBtn);
-        listaPedidos.appendChild(li); 
+          function filtrarPedidos(filtro) {
+            const listaPedidos = document.getElementById("listaPedidos");
+            listaPedidos.innerHTML = "";
+    
+            const pedidosFiltrados = pedidos.filter((pedido) => {
+              if (filtro === "todos") return true;
+              if (filtro === "pagos") return pedido.pagamento;
+              if (filtro === "loja") return pedido.retirada === "loja";
+              if (filtro === "entrega") return pedido.retirada === "entrega";
+              return false;
+            });
+    
+            pedidosFiltrados.forEach((pedido, index) => {
+              const li = document.createElement("li");
+              li.innerHTML = `
+                <div class="separar"> 
+                    <p>Nome: ${pedido.nome}</p>
+                    <p>Endereço: ${pedido.endereco}</p>
+                    <p>Pagamento: ${pedido.pagamento ? "Sim" : "Não"}</p> 
+                    <p>Retirada: ${pedido.retirada}</p> 
+                    <p>Horário: ${pedido.horario}</p>  
+                    <p>Frango: ${pedido.frango ? "Sim" : "Não"}</p> 
+                    <p>Maionese: ${pedido.maionese ? "Sim" : "Não"}</p> 
+                    <p>Polenta: ${pedido.polenta ? "Sim" : "Não"}</p> 
+                </div>`;
     
                 const imprimirBtn = document.createElement("span");
             imprimirBtn.textContent = "imprimir";

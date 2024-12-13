@@ -15,19 +15,6 @@ header {
   display: flex;
   align-items: center;
 }
-
-.barra {
-  width: 200px;
-  height: 10px;
-  background-color: #e0e0e0;
-  margin: 0 10px;
-}
-
-.barra div {
-  height: 100%;
-  background-color: #76c7c0;
-}
-
 .pedidos {
   margin-top: 20px;
   height: 100px;
@@ -49,92 +36,6 @@ input {
   border-radius: 20px;
 }
 
-button {
-  margin-top: 20px;
-}
-
-/* From Uiverse.io by shah1345 */
-.button2 {
-  display: inline-block;
-  transition: all 0.2s ease-in;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  color: #090909;
-  padding: 0.7em 1.7em;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-}
-
-.button2:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-}
-
-.button2:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.25);
-  top: 100%;
-  width: 140%;
-  height: 180%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-.button2:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #009087;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-.button2:hover {
-  color: #ffffff;
-  border: 1px solid #009087;
-}
-
-.button2:hover:before {
-  top: -35%;
-  background-color: #009087;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-.button2:hover:after {
-  top: -45%;
-  background-color: #009087;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
 #menu {
   display: flex;
   flex-direction: row;
@@ -142,204 +43,11 @@ button {
   padding: 0;
   margin: 0;
 }
-div#menu > button {
-  width: 170px;
-  margin: 20px;
-  display: inline-block;
-  transition: all 0.2s ease-in;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  color: #090909;
-  padding: 0.2em 2em;
-  cursor: pointer;
-  font-size: 12px;
-  border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+#menu > #pesquisaNome{
+  width: 100%;
+  height: 30%;
+  transform: translateY(13px);
 }
-
-div#menu > button:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-}
-
-div#menu > button:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.25);
-  top: 100%;
-  width: 140%;
-  height: 180%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #009087;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button:hover {
-  color: #ffffff;
-  border: 1px solid #009087;
-}
-
-div#menu > button:hover:before {
-  top: -35%;
-  background-color: #009087;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button:hover:after {
-  top: -45%;
-  background-color: #009087;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#pagos:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #37e318;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button#pagos:hover {
-  color: #ffffff;
-  border: 1px solid #37e318;
-}
-
-div#menu > button#pagos:hover:before {
-  top: -35%;
-  background-color: #37e318;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#pagos:hover:after {
-  top: -45%;
-  background-color: #37e318;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#fim:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #e31818;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button#fim:hover {
-  color: #ffffff;
-  border: 1px solid #e31818;
-}
-
-div#menu > button#fim:hover:before {
-  top: -35%;
-  background-color: #e31818;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#fim:hover:after {
-  top: -45%;
-  background-color: #e31818;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#entrega:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #c9c30f;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button#entrega:hover {
-  color: #ffffff;
-  border: 1px solid #c9c30f;
-}
-
-div#menu > button#entrega:hover:before {
-  top: -35%;
-  background-color: #c9c30f;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#entrega:hover:after {
-  top: -45%;
-  background-color: #c9c30f;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#loja:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #1892e3;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-div#menu > button#loja:hover {
-  color: #ffffff;
-  border: 1px solid #1892e3;
-}
-
-div#menu > button#loja:hover:before {
-  top: -35%;
-  background-color: #1892e3;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-div#menu > button#loja:hover:after {
-  top: -45%;
-  background-color: #1892e3;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -360,8 +68,8 @@ div#menu > button#loja:hover:after {
 }
 
 div > h3{
-  width: 100%;
-  transform: translateY(20px);
+  width: 45%;
+  transform: translateY(1px);
 }
 
 .separar {
@@ -372,183 +80,19 @@ div > h3{
   border: solid 3px;
   padding: 2px;
 }
-
-
-
 .separar > p {
   margin: 4px;
   width: 200px;
   display: flex;
   flex-wrap: wrap;
 }
-.cancelar {
-  width: 179px;
-  height: auto;
-  float: left;
-  transition: 0.5s linear;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  padding: 15px;
-  text-align: center;
-  margin: 10px 50px 10px 0px;
-  background: transparent;
-  text-transform: uppercase;
-  font-weight: 900;
-}
-
-.cancelar:before {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0;
-  height: 4px;
-  width: 100%;
-  border-bottom: 4px solid transparent;
-  border-left: 4px solid transparent;
-  box-sizing: border-box;
-  transform: translateX(100%);
-}
-
-.cancelar:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  border-top: 4px solid transparent;
-  border-right: 4px solid transparent;
-  box-sizing: border-box;
-  transform: translateX(-100%);
-}
-
-.cancelar:hover {
-  box-shadow: 0 5px 15px rgba(251, 2, 2, 0.5);
-}
-
-.cancelar:hover:before {
-  border-color: #fe0202;
-  height: 100%;
-  transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.3s;
-}
-
-.cancelar:hover:after {
-  border-color: #fe0202;
-  height: 100%;
-  transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.5s;
-}
-
-span {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background: transparent;
-}
-
 /* Estilo básico para os pedidos */
 #listaPedidos li {
     margin : 10px 10px ;
     padding: 10px;
     border-radius: 5px;
     width: 210px;
-    height: 390px;
+    height: 460px;
     border: 1px solid #ccc;
     list-style: none;
-  }
-  
-  /* Pedidos pagos */
-  .pedido-pago {
-    background-color: #d4edda; /* Verde claro */
-    border: 1px solid #c3e6cb;
-    color: #155724;
-  }
-  
-  /* Pedidos retirados na loja */
-  .pedido-loja {
-    background-color: #fff3cd; /* Amarelo claro */
-    border: 1px solid #ffeeba;
-    color: #856404;
-  }
-  
-  /* Pedidos para entrega */
-  .pedido-entrega {
-    background-color: #cce5ff; /* Azul claro */
-    border: 1px solid #b8daff;
-    color: #004085;
-  }
-  
-  /* Pedidos não pagos */
-  .pedido-nao-pago {
-    background-color: #f8d7da; /* Vermelho claro */
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-  }
-
-
-
-
-
-  .imprimir{
-    width: 179px;
-    height: auto;
-    float: left;
-    transition: 0.5s linear;
-    position: relative;
-    display: block;
-    overflow: hidden;
-    padding: 15px;
-    text-align: center;
-    margin: 10px 50px 10px 0px;
-    background: transparent;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-  
-  .imprimir:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 100%;
-    border-bottom: 4px solid transparent;
-    border-left: 4px solid transparent;
-    box-sizing: border-box;
-    transform: translateX(100%);
-  }
-  
-  .imprimir:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    border-top: 4px solid transparent;
-    border-right: 4px solid transparent;
-    box-sizing: border-box;
-    transform: translateX(-100%);
-  }
-  
-  .imprimir:hover {
-    box-shadow: 0 5px 15px #49fe02(251, 2, 2, 0.5);
-  }
-  
-  .imprimir:hover:before {
-    border-color: #49fe02;
-    height: 100%;
-    transform: translateX(0);
-    transition: 0.3s transform linear, 0.3s height linear 0.3s;
-  }
-  
-  .imprimir:hover:after {
-    border-color: #49fe02;
-    height: 100%;
-    transform: translateX(0);
-    transition: 0.3s transform linear, 0.3s height linear 0.5s;
   }
