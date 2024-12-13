@@ -1,8 +1,8 @@
 button {
     margin-top: 20px;
-  }
-  
-  .button2 {
+}
+
+.button2 {
     display: inline-block;
     transition: all 0.2s ease-in;
     position: relative;
@@ -16,14 +16,14 @@ button {
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-  }
+}
   
-  .button2:active {
+.button2:active {
     color: #666;
     box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-  }
+}
   
-  .button2:before {
+.button2:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -36,9 +36,9 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  .button2:after {
+.button2:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -51,25 +51,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  .button2:hover {
+.button2:hover {
     color: #ffffff;
     border: 1px solid #009087;
-  }
-  
-  .button2:hover:before {
+}
+    
+.button2:hover:before {
     top: -35%;
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  .button2:hover:after {
+.button2:hover:after {
     top: -45%;
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
-  div#menu > button {
+}
+
+div#menu > button {
     width: 170px;
     margin: 20px;
     display: inline-block;
@@ -85,14 +86,14 @@ button {
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-  }
+}
   
-  div#menu > button:active {
+div#menu > button:active {
     color: #666;
     box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-  }
+}
   
-  div#menu > button:before {
+div#menu > button:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -105,9 +106,9 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button:after {
+div#menu > button:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -120,26 +121,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button:hover {
+div#menu > button:hover {
     color: #ffffff;
     border: 1px solid #009087;
-  }
+}
   
-  div#menu > button:hover:before {
+div#menu > button:hover:before {
     top: -35%;
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button:hover:after {
+div#menu > button:hover:after {
     top: -45%;
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#pagos:after {
+div#menu > button#pagos:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -152,26 +153,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button#pagos:hover {
+div#menu > button#pagos:hover {
     color: #ffffff;
     border: 1px solid #37e318;
-  }
+}
   
-  div#menu > button#pagos:hover:before {
+div#menu > button#pagos:hover:before {
     top: -35%;
     background-color: #37e318;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#pagos:hover:after {
+div#menu > button#pagos:hover:after {
     top: -45%;
     background-color: #37e318;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
   
-  div#menu > button#fim:after {
+div#menu > button#fim:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -184,26 +185,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button#fim:hover {
+div#menu > button#fim:hover {
     color: #ffffff;
     border: 1px solid #e31818;
-  }
+}
   
-  div#menu > button#fim:hover:before {
+div#menu > button#fim:hover:before {
     top: -35%;
     background-color: #e31818;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#fim:hover:after {
+div#menu > button#fim:hover:after {
     top: -45%;
     background-color: #e31818;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#entrega:after {
+div#menu > button#entrega:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -216,26 +217,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button#entrega:hover {
+div#menu > button#entrega:hover {
     color: #ffffff;
     border: 1px solid #c9c30f;
-  }
+}
   
-  div#menu > button#entrega:hover:before {
+div#menu > button#entrega:hover:before {
     top: -35%;
     background-color: #c9c30f;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#entrega:hover:after {
+div#menu > button#entrega:hover:after {
     top: -45%;
     background-color: #c9c30f;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#loja:after {
+div#menu > button#loja:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -248,26 +249,26 @@ button {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  }
+}
   
-  div#menu > button#loja:hover {
+div#menu > button#loja:hover {
     color: #ffffff;
     border: 1px solid #1892e3;
-  }
+}
   
-  div#menu > button#loja:hover:before {
+div#menu > button#loja:hover:before {
     top: -35%;
     background-color: #1892e3;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
-  div#menu > button#loja:hover:after {
+div#menu > button#loja:hover:after {
     top: -45%;
     background-color: #1892e3;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  }
+}
   
- .cancelar {
+.cancelar {
     width: 179px;
     height: auto;
     float: left;
@@ -281,9 +282,9 @@ button {
     background: transparent;
     text-transform: uppercase;
     font-weight: 900;
-  }
+}
   
-  .cancelar:before {
+.cancelar:before {
     position: absolute;
     content: "";
     left: 0;
@@ -294,9 +295,9 @@ button {
     border-left: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(100%);
-  }
+}
   
-  .cancelar:after {
+.cancelar:after {
     position: absolute;
     content: "";
     top: 0;
@@ -307,35 +308,36 @@ button {
     border-right: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(-100%);
-  }
+}
   
-  .cancelar:hover {
+.cancelar:hover {
     box-shadow: 0 5px 15px rgba(251, 2, 2, 0.5);
-  }
+}
   
-  .cancelar:hover:before {
+.cancelar:hover:before {
     border-color: #fe0202;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.3s;
-  }
+}
   
-  .cancelar:hover:after {
+.cancelar:hover:after {
     border-color: #fe0202;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.5s;
-  }
+}
   
-  span {
+span {
     color: black;
     text-decoration: none;
     cursor: pointer;
     outline: none;
     border: none;
     background: transparent;
-  }
- .imprimir{
+}
+
+.imprimir{
     width: 179px;
     height: auto;
     float: left;
@@ -349,9 +351,9 @@ button {
     background: transparent;
     text-transform: uppercase;
     font-weight: 900;
-  }
+}
   
-  .imprimir:before {
+.imprimir:before {
     position: absolute;
     content: "";
     left: 0;
@@ -362,9 +364,9 @@ button {
     border-left: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(100%);
-  }
+}
   
-  .imprimir:after {
+.imprimir:after {
     position: absolute;
     content: "";
     top: 0;
@@ -375,26 +377,27 @@ button {
     border-right: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(-100%);
-  }
+}
   
-  .imprimir:hover {
+.imprimir:hover {
     box-shadow: 0 5px 15px #e5fe02(251, 2, 2, 0.5);
-  }
+}
   
-  .imprimir:hover:before {
+.imprimir:hover:before {
     border-color: #e5fe02;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.3s;
-  }
+}
   
-  .imprimir:hover:after {
+.imprimir:hover:after {
     border-color: #e5fe02;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.5s;
-  } 
-  .confirmar{
+}
+
+.confirmar{
     width: 210px;
     height: auto;
     float: left;
@@ -409,9 +412,9 @@ button {
     text-transform: uppercase;
     font-weight: 900;
     border: none;
-  }
+}
   
-  .confirmar:before {
+.confirmar:before {
     position: absolute;
     content: "";
     left: 0;
@@ -422,9 +425,9 @@ button {
     border-left: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(100%);
-  }
-  
-  .confirmar:after {
+}
+
+.confirmar:after {
     position: absolute;
     content: "";
     top: 0;
@@ -435,22 +438,22 @@ button {
     border-right: 4px solid transparent;
     box-sizing: border-box;
     transform: translateX(-100%);
-  }
+}
   
-  .confirmar:hover {
+.confirmar:hover {
     box-shadow: 0 5px 15px #49fe02(251, 2, 2, 0.5);
-  }
+}
   
-  .confirmar:hover:before {
+.confirmar:hover:before {
     border-color: #49fe02;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.3s;
-  }
+}
   
-  .confirmar:hover:after {
+.confirmar:hover:after {
     border-color: #49fe02;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.5s;
-  }
+}
