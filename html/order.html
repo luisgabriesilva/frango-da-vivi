@@ -19,7 +19,8 @@
         <h2>Faça seu pedido</h2>
         <input type="text" id="nome" placeholder="Nome da pessoa" />
         <input type="text" id="endereco" placeholder="Endereço" />
-        <label> <input type="checkbox" id="pagamento" /> Já pagou? </label>
+        <label> 
+          <input type="checkbox" id="pagamento" /> Já pagou?</label>
         <label>
           <input type="radio" name="retirada" value="loja" /> Retirar na loja
           <input type="radio" name="retirada" value="entrega" /> Entregar
@@ -34,13 +35,10 @@
             <input type="number" id="quantidadePolenta" min="0" value="0" onchange="atualizarValorTotal()" />
           </div>
           <p id="valorTotal">Valor Total: R$ 0</p>
-        <button class="button2" onclick="finalizarPedido()">
-          Finalizar Pedido
-        </button>
+        <button class="button2" onclick="finalizarPedido()">Finalizar Pedido</button>
       </div>
       <div class="pedidos">
         <div id="menu">
-          <div id="menu">
             <h3>Pedidos Realizados:</h3>
             <input type="text" id="pesquisaNome" placeholder="Pesquisar pelo nome" oninput="filtrarPedidosPorNome()" />
             <button onclick="filtrarPedidos('todos')">Todos</button>
@@ -48,7 +46,6 @@
             <button id="loja" onclick="filtrarPedidos('loja')">Retirar na Loja</button>
             <button id="entrega" onclick="filtrarPedidos('entrega')">Entrega</button>
             <button id="fim" onclick="finalizarDia()">Dia Finalizado</button>
-          </div>
         </div>
         <ul id="listaPedidos"></ul>
       </div>
