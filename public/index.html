@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda de Frangos</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Olá, quantos frangos iremos vender hoje?</h1>
+        <input type="number" id="quantidadeFrangos" min="0" value="" onchange="atualizarQuantidadeFrangos()">
+        <button onclick="irParaPedido()">Enviar</button>
+    </div>
+    <script src="../javascript/paginainicial.js"></script>
+    <script>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCYnm62sr68Q9RUB5FpF06WbOuJAfFO_2w",
+  authDomain: "frango-da-vive.firebaseapp.com",
+  projectId: "frango-da-vive",
+  storageBucket: "frango-da-vive.firebasestorage.app",
+  messagingSenderId: "318199346333",
+  appId: "1:318199346333:web:a6040b3e9b085e7c2cd074",
+  measurementId: "G-1XCZHJWQTH"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+    </script>
+</body>
+</html>
